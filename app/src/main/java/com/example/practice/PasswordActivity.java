@@ -30,12 +30,12 @@ public class PasswordActivity extends AppCompatActivity {
         if(!TextUtils.isEmpty(ed_password.getText().toString())){
             Log.d("RESULT_PASSWORD",testPassword);
             Intent email = new Intent(this, EmailActivity.class);
-//            SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
-//            pref.edit()
-//                    .putString("password",ed_password.getText().toString())
-//                    .commit();
+            SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
+            pref.edit()
+                    .putString("password",ed_password.getText().toString())
+                    .commit();
             startActivityForResult(email,10);
-            email.putExtra("testPassword",testPassword);
+//            email.putExtra("testPassword",testPassword);
             setResult(RESULT_OK,email);
             finish();
 

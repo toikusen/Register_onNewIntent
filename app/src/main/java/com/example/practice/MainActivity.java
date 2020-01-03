@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d("RESULT",resultUsername + "/" + resultPassword + "/" + resultEmail);
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
@@ -54,13 +53,19 @@ public class MainActivity extends AppCompatActivity {
                 if (resultCode!=RESULT_OK) {
                     finish();
                 }else {
-                    String result = data.getStringExtra("testUsername");
-                    username.setText(result);
-//                    username.setText(getSharedPreferences("test", MODE_PRIVATE).getString("user",""));
-//                    password.setText(getSharedPreferences("test", MODE_PRIVATE).getString("password",""));
-//                    email.setText(getSharedPreferences("test", MODE_PRIVATE).getString("email",""));
+//                    String result1 = data.getStringExtra("testUsername");
+//                    username.setText(result1);
+//                    String result2 = data.getStringExtra("testPassword");
+//                    password.setText(result2);
+//                    String result3 = data.getStringExtra("testEmail");
+//                    email.setText(result3);
+
+                    username.setText(getSharedPreferences("test", MODE_PRIVATE).getString("user",""));
+                    password.setText(getSharedPreferences("test", MODE_PRIVATE).getString("password",""));
+                    email.setText(getSharedPreferences("test", MODE_PRIVATE).getString("email",""));
                 }
             }
     }
+
 }
 

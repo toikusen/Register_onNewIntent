@@ -29,9 +29,7 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.un);
         password = findViewById(R.id.pw);
         email = findViewById(R.id.em);
-        resultUsername = username.getText().toString();
-        resultPassword = password.getText().toString();
-        resultEmail = email.getText().toString();
+
     }
     public void login(View view){
         Intent username = new Intent(this,UsernameActivity.class);
@@ -39,12 +37,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        resultUsername = username.getText().toString();
+        resultPassword = password.getText().toString();
+        resultEmail = email.getText().toString();
+        Log.d("RESULT",resultUsername + "/" + resultPassword + "/" + resultEmail);
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
             if(requestCode==REQUEST_CODE_LOGIN){
                 if (resultCode!=RESULT_OK) {
                     finish();
                 }else {
-                    Log.d("RESULT",resultUsername + "/" + resultPassword + "/" + resultEmail);
+//                    String result = data.getStringExtra("RESULT");
+//                    email.setText(result);
                     username.setText(getSharedPreferences("test", MODE_PRIVATE).getString("user",""));
                     password.setText(getSharedPreferences("test", MODE_PRIVATE).getString("password",""));
                     email.setText(getSharedPreferences("test", MODE_PRIVATE).getString("email",""));

@@ -22,24 +22,23 @@ public class PasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_password);
     }
 
-    public void email(){
-        Intent email = new Intent(this, EmailActivity.class);
-        SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
-        pref.edit()
-                .putString("password",ed_password.getText().toString())
-                .commit();
-        startActivityForResult(email,10);
-    }
-
     public void next2(View view){
 
         ed_password = findViewById(R.id.password);
         String testPassword = ed_password.getText().toString();
+
         if(!TextUtils.isEmpty(ed_password.getText().toString())){
             Log.d("RESULT_PASSWORD",testPassword);
+            Intent email = new Intent(this, EmailActivity.class);
+            SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
+            pref.edit()
+                    .putString("password",ed_password.getText().toString())
+                    .commit();
+            startActivityForResult(email,10);
+//            email.putExtra("testPassword",testPassword);
             setResult(RESULT_OK);
             finish();
-            email();
+
         }else{
             new AlertDialog.Builder(this)
                     .setTitle("錯誤")

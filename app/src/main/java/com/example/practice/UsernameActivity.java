@@ -1,6 +1,5 @@
 package com.example.practice;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,23 +21,22 @@ public class UsernameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_username);
 
     }
-    public void password(){
-        Intent password = new Intent(this,PasswordActivity.class);
-        SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
-        pref.edit()
-                .putString("user",ed_username.getText().toString())
-                .commit();
-        startActivityForResult(password,10);
-    }
 
     public void next1(View view){
         ed_username = findViewById(R.id.username);
         String testUsername = ed_username.getText().toString();
+
         if(!TextUtils.isEmpty(ed_username.getText().toString())){
             Log.d("RESULT_USERNAME",testUsername);
+            Intent password = new Intent(this,PasswordActivity.class);
+            SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
+            pref.edit()
+                    .putString("user",ed_username.getText().toString())
+                    .commit();
+            startActivityForResult(password,10);
+//            password.putExtra("testUsername",testUsername);
             setResult(RESULT_OK);
             finish();
-            password();
         }else {
             new AlertDialog.Builder(this)
                     .setTitle("訊息")

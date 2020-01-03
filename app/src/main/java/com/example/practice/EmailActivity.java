@@ -30,8 +30,10 @@ public class EmailActivity extends AppCompatActivity {
 
         ed_email = findViewById(R.id.email);
         String testEmail = ed_email.getText().toString();
+
         if (!TextUtils.isEmpty(ed_email.getText().toString())) {
             Log.d("RESULT_EMAIL",testEmail);
+            Intent email = new Intent(this, EmailActivity.class);
             SharedPreferences pref= getSharedPreferences("test",MODE_PRIVATE);
             pref.edit()
                     .putString("email",ed_email.getText().toString())

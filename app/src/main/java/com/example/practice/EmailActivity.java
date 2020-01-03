@@ -33,12 +33,14 @@ public class EmailActivity extends AppCompatActivity {
 
         if (!TextUtils.isEmpty(ed_email.getText().toString())) {
             Log.d("RESULT_EMAIL",testEmail);
-            Intent email = new Intent(this, EmailActivity.class);
-            SharedPreferences pref= getSharedPreferences("test",MODE_PRIVATE);
-            pref.edit()
-                    .putString("email",ed_email.getText().toString())
-                    .commit();
-            setResult(RESULT_OK);
+            Intent result = new Intent(this, MainActivity.class);
+//            SharedPreferences pref= getSharedPreferences("test",MODE_PRIVATE);
+//            pref.edit()
+//                    .putString("email",ed_email.getText().toString())
+//                    .commit();
+            startActivityForResult(result,10);
+            result.putExtra("testEmail",testEmail);
+            setResult(RESULT_OK,result);
             finish();
         } else {
             new AlertDialog.Builder(this)

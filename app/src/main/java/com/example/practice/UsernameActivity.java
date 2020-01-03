@@ -29,13 +29,13 @@ public class UsernameActivity extends AppCompatActivity {
         if(!TextUtils.isEmpty(ed_username.getText().toString())){
             Log.d("RESULT_USERNAME",testUsername);
             Intent password = new Intent(this,PasswordActivity.class);
-            SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
-            pref.edit()
-                    .putString("user",ed_username.getText().toString())
-                    .commit();
+//            SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
+//            pref.edit()
+//                    .putString("user",ed_username.getText().toString())
+//                    .commit();
             startActivityForResult(password,10);
-//            password.putExtra("testUsername",testUsername);
-            setResult(RESULT_OK);
+            password.putExtra("testUsername",testUsername);
+            setResult(RESULT_OK,password);
             finish();
         }else {
             new AlertDialog.Builder(this)

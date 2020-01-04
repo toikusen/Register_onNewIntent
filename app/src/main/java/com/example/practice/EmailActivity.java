@@ -38,8 +38,8 @@ public class EmailActivity extends AppCompatActivity {
             pref.edit()
                     .putString("email",ed_email.getText().toString())
                     .commit();
-//            startActivityForResult(result,10);
-//            result.putExtra("testEmail",testEmail);
+            startActivityForResult(result,10);
+            result.putExtra("testEmail",testEmail);
             setResult(RESULT_OK,result);
             finish();
         } else {

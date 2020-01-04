@@ -35,7 +35,7 @@ public class PasswordActivity extends AppCompatActivity {
                     .putString("password",ed_password.getText().toString())
                     .commit();
             startActivityForResult(email,10);
-//            email.putExtra("testPassword",testPassword);
+            email.putExtra("testPassword",testPassword);
             setResult(RESULT_OK,email);
             finish();
 

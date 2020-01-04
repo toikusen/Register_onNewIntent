@@ -31,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.pw);
         email = findViewById(R.id.em);
 
+        username.setText(getSharedPreferences("test", MODE_PRIVATE).getString("user",""));
+        password.setText(getSharedPreferences("test", MODE_PRIVATE).getString("password",""));
+        email.setText(getSharedPreferences("test", MODE_PRIVATE).getString("email",""));
+
     }
     public void login(View view){
         Intent username = new Intent(this,UsernameActivity.class);
@@ -47,25 +51,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-
-            if(requestCode==REQUEST_CODE_LOGIN){
-                if (resultCode!=RESULT_OK) {
-                    finish();
-                }else {
-//                    String result1 = data.getStringExtra("testUsername");
-//                    username.setText(result1);
-//                    String result2 = data.getStringExtra("testPassword");
-//                    password.setText(result2);
-//                    String result3 = data.getStringExtra("testEmail");
-//                    email.setText(result3);
-
-                    username.setText(getSharedPreferences("test", MODE_PRIVATE).getString("user",""));
-                    password.setText(getSharedPreferences("test", MODE_PRIVATE).getString("password",""));
-                    email.setText(getSharedPreferences("test", MODE_PRIVATE).getString("email",""));
-                }
-            }
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+//        String result1 = intent.getStringExtra("testUsername");
+//        username.setText(result1);
+//        String result2 = intent.getStringExtra("testPassword");
+//        password.setText(result2);
+//        String result3 = intent.getStringExtra("testEmail");
+//        email.setText(result3);
+        username.setText(getSharedPreferences("test", MODE_PRIVATE).getString("user",""));
+        password.setText(getSharedPreferences("test", MODE_PRIVATE).getString("password",""));
+        email.setText(getSharedPreferences("test", MODE_PRIVATE).getString("email",""));
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//
+//            if(requestCode==REQUEST_CODE_LOGIN){
+//                if (resultCode!=RESULT_OK) {
+//                    finish();
+//                }else {
+////                    String result1 = data.getStringExtra("testUsername");
+////                    username.setText(result1);
+////                    String result2 = data.getStringExtra("testPassword");
+////                    password.setText(result2);
+////                    String result3 = data.getStringExtra("testEmail");
+////                    email.setText(result3);
+//
+//                    username.setText(getSharedPreferences("test", MODE_PRIVATE).getString("user",""));
+//                    password.setText(getSharedPreferences("test", MODE_PRIVATE).getString("password",""));
+//                    email.setText(getSharedPreferences("test", MODE_PRIVATE).getString("email",""));
+//                }
+//            }
+//    }
 
 }
 

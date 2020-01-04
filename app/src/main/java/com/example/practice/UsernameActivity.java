@@ -34,7 +34,7 @@ public class UsernameActivity extends AppCompatActivity {
                     .putString("user",ed_username.getText().toString())
                     .commit();
             startActivityForResult(password,10);
-//            password.putExtra("testUsername",testUsername);
+            password.putExtra("testUsername",testUsername);
             setResult(RESULT_OK,password);
             finish();
         }else {

@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 public class PasswordActivity extends AppCompatActivity {
 
     private EditText ed_password;
+    private String testPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,21 +25,22 @@ public class PasswordActivity extends AppCompatActivity {
     }
 
     public void next2(View view){
-
+        final Intent password = getIntent();
         ed_password = findViewById(R.id.password);
-        String testPassword = ed_password.getText().toString();
+        testPassword = ed_password.getText().toString();
 
         if(!TextUtils.isEmpty(ed_password.getText().toString())){
-            Log.d("RESULT_PASSWORD",testPassword);
+            Log.d("RESULT_PASSWORD", testPassword);
             Intent email = new Intent(this, EmailActivity.class);
             SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
             pref.edit()
                     .putString("password",ed_password.getText().toString())
                     .commit();
-            startActivityForResult(email,10);
-            email.putExtra("testPassword",testPassword);
-            setResult(RESULT_OK,email);
-            finish();
+
+            email
+                    .putExtra("testUsername",password.getStringExtra("testUsername"))
+                    .putExtra("testPassword", testPassword);
+            startActivity(email);
 
         }else{
             new AlertDialog.Builder(this)

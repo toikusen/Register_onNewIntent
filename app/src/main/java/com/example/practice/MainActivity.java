@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.pw);
         email = findViewById(R.id.em);
 
-        username.setText(getSharedPreferences("test", MODE_PRIVATE).getString("user",""));
-        password.setText(getSharedPreferences("test", MODE_PRIVATE).getString("password",""));
-        email.setText(getSharedPreferences("test", MODE_PRIVATE).getString("email",""));
+//        username.setText(getSharedPreferences("test", MODE_PRIVATE).getString("user",""));
+//        password.setText(getSharedPreferences("test", MODE_PRIVATE).getString("password",""));
+//        email.setText(getSharedPreferences("test", MODE_PRIVATE).getString("email",""));
 
     }
     public void login(View view){
@@ -42,26 +42,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
         resultUsername = username.getText().toString();
         resultPassword = password.getText().toString();
         resultEmail = email.getText().toString();
-        Log.d("RESULT",resultUsername + "/" + resultPassword + "/" + resultEmail);
+        Log.d("RESULT", resultUsername + "/" + resultPassword + "/" + resultEmail);
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+//        setIntent(intent);
 //        String result1 = intent.getStringExtra("testUsername");
 //        username.setText(result1);
 //        String result2 = intent.getStringExtra("testPassword");
 //        password.setText(result2);
 //        String result3 = intent.getStringExtra("testEmail");
 //        email.setText(result3);
+
         username.setText(getSharedPreferences("test", MODE_PRIVATE).getString("user",""));
         password.setText(getSharedPreferences("test", MODE_PRIVATE).getString("password",""));
         email.setText(getSharedPreferences("test", MODE_PRIVATE).getString("email",""));
+
     }
 
 //    @Override
